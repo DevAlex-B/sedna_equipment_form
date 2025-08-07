@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equipment Status Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-1GmCkzE/4ZCkxzgv2Fne5+5ZTCDxbFzNw2K6Jqq/RSB+BeIV/pY5Pja/qvpDMAYA9Yg3gFyv1I3VzvbYOPxfHw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Sedna Logo" />
+        </div>
+        <div class="top-actions">
+            <button class="top-btn" id="support-btn"><i class="fa-solid fa-life-ring"></i> Support</button>
+            <button class="top-btn" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </div>
+    </header>
+
+    <main class="form-wrapper">
+        <form id="equipment-form" action="submit.php" method="POST" novalidate>
+            <!-- Operator Panel -->
+            <section class="panel">
+                <h2><i class="fa-solid fa-user-helmet-safety"></i> Operator</h2>
+                <select name="operator" id="operator" required>
+                    <option value="" disabled selected>Select operator</option>
+                    <option value="John Doe">John Doe</option>
+                    <option value="Alice Smith">Alice Smith</option>
+                    <option value="Bob Johnson">Bob Johnson</option>
+                </select>
+            </section>
+
+            <!-- Equipment Panel -->
+            <section class="panel">
+                <h2><i class="fa-solid fa-truck-pickup"></i> Equipment</h2>
+                <select name="equipment" id="equipment" required>
+                    <option value="" disabled selected>Select equipment</option>
+                    <option value="Excavator">Excavator</option>
+                    <option value="Dump Truck">Dump Truck</option>
+                    <option value="Drill">Drill</option>
+                </select>
+            </section>
+
+            <!-- Status Panel -->
+            <section class="panel">
+                <h2><i class="fa-solid fa-clipboard-check"></i> Status</h2>
+                <select name="status" id="status" required>
+                    <option value="" disabled selected>Select status</option>
+                    <option value="Passed">Passed</option>
+                    <option value="Failed">Failed</option>
+                </select>
+            </section>
+
+            <!-- Daily Status Panel -->
+            <section class="panel" id="daily-status-panel">
+                <h2><i class="fa-solid fa-calendar-week"></i> Daily Status</h2>
+                <div class="day" data-day="monday">
+                    <span class="day-label">Monday</span>
+                    <div class="status-options">
+                        <button type="button" class="status-btn online" data-value="Online" title="Online"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn offline" data-value="Offline" title="Offline"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn standby" data-value="Standby" title="Standby"><i class="fa-solid fa-circle"></i></button>
+                        <input type="hidden" name="monday_status" value="" />
+                    </div>
+                </div>
+                <div class="day" data-day="tuesday">
+                    <span class="day-label">Tuesday</span>
+                    <div class="status-options">
+                        <button type="button" class="status-btn online" data-value="Online" title="Online"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn offline" data-value="Offline" title="Offline"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn standby" data-value="Standby" title="Standby"><i class="fa-solid fa-circle"></i></button>
+                        <input type="hidden" name="tuesday_status" value="" />
+                    </div>
+                </div>
+                <div class="day" data-day="wednesday">
+                    <span class="day-label">Wednesday</span>
+                    <div class="status-options">
+                        <button type="button" class="status-btn online" data-value="Online" title="Online"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn offline" data-value="Offline" title="Offline"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn standby" data-value="Standby" title="Standby"><i class="fa-solid fa-circle"></i></button>
+                        <input type="hidden" name="wednesday_status" value="" />
+                    </div>
+                </div>
+                <div class="day" data-day="thursday">
+                    <span class="day-label">Thursday</span>
+                    <div class="status-options">
+                        <button type="button" class="status-btn online" data-value="Online" title="Online"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn offline" data-value="Offline" title="Offline"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn standby" data-value="Standby" title="Standby"><i class="fa-solid fa-circle"></i></button>
+                        <input type="hidden" name="thursday_status" value="" />
+                    </div>
+                </div>
+                <div class="day" data-day="friday">
+                    <span class="day-label">Friday</span>
+                    <div class="status-options">
+                        <button type="button" class="status-btn online" data-value="Online" title="Online"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn offline" data-value="Offline" title="Offline"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn standby" data-value="Standby" title="Standby"><i class="fa-solid fa-circle"></i></button>
+                        <input type="hidden" name="friday_status" value="" />
+                    </div>
+                </div>
+                <div class="day" data-day="saturday">
+                    <span class="day-label">Saturday</span>
+                    <div class="status-options">
+                        <button type="button" class="status-btn online" data-value="Online" title="Online"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn offline" data-value="Offline" title="Offline"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn standby" data-value="Standby" title="Standby"><i class="fa-solid fa-circle"></i></button>
+                        <input type="hidden" name="saturday_status" value="" />
+                    </div>
+                </div>
+                <div class="day" data-day="sunday">
+                    <span class="day-label">Sunday</span>
+                    <div class="status-options">
+                        <button type="button" class="status-btn online" data-value="Online" title="Online"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn offline" data-value="Offline" title="Offline"><i class="fa-solid fa-circle"></i></button>
+                        <button type="button" class="status-btn standby" data-value="Standby" title="Standby"><i class="fa-solid fa-circle"></i></button>
+                        <input type="hidden" name="sunday_status" value="" />
+                    </div>
+                </div>
+            </section>
+
+            <!-- Downtime Panel -->
+            <section class="panel">
+                <h2><i class="fa-solid fa-clock"></i> Downtime</h2>
+                <label class="switch">
+                    <input type="checkbox" id="downtime" name="downtime" />
+                    <span class="slider"></span>
+                </label>
+            </section>
+
+            <!-- Downtime Details Panel -->
+            <section class="panel hidden" id="downtime-details">
+                <h2><i class="fa-solid fa-hourglass-half"></i> Downtime Details</h2>
+                <div class="downtime-group">
+                    <h3>Planned Downtime</h3>
+                    <div class="time-group">
+                        <label for="planned_start">Start</label>
+                        <input type="time" id="planned_start" name="planned_downtime_start" />
+                    </div>
+                    <div class="time-group">
+                        <label for="planned_end">End</label>
+                        <input type="time" id="planned_end" name="planned_downtime_end" />
+                    </div>
+                </div>
+                <div class="downtime-group">
+                    <h3>Unplanned Downtime</h3>
+                    <div class="time-group">
+                        <label for="unplanned_start">Start</label>
+                        <input type="time" id="unplanned_start" name="unplanned_downtime_start" />
+                    </div>
+                    <div class="time-group">
+                        <label for="unplanned_end">End</label>
+                        <input type="time" id="unplanned_end" name="unplanned_downtime_end" />
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit Panel -->
+            <section class="panel submit-panel">
+                <button type="submit" id="submit-btn" class="submit-btn">
+                    <span class="btn-text">Submit</span>
+                    <span class="spinner"><i class="fa-solid fa-circle-notch fa-spin"></i></span>
+                </button>
+                <div class="form-feedback" id="form-feedback"></div>
+            </section>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
