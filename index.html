@@ -56,6 +56,11 @@
             <!-- Daily Status Panel -->
             <section class="panel" id="daily-status-panel">
                 <h2><i class="fa-solid fa-calendar-week"></i> Daily Status</h2>
+                <div class="status-legend">
+                    <div class="legend-item"><i class="fa-solid fa-circle online"></i> Online</div>
+                    <div class="legend-item"><i class="fa-solid fa-circle offline"></i> Offline</div>
+                    <div class="legend-item"><i class="fa-solid fa-circle standby"></i> Standby</div>
+                </div>
                 <div class="day" data-day="monday">
                     <span class="day-label">Monday</span>
                     <div class="status-options">
@@ -124,10 +129,14 @@
             <!-- Downtime Panel -->
             <section class="panel">
                 <h2><i class="fa-solid fa-clock"></i> Downtime</h2>
-                <label class="switch">
-                    <input type="checkbox" id="downtime" name="downtime" />
-                    <span class="slider"></span>
-                </label>
+                <div class="downtime-toggle">
+                    <span>No</span>
+                    <label class="switch">
+                        <input type="checkbox" id="downtime" name="downtime" />
+                        <span class="slider"></span>
+                    </label>
+                    <span>Yes</span>
+                </div>
             </section>
 
             <!-- Downtime Details Panel -->
@@ -157,16 +166,21 @@
                 </div>
             </section>
 
-            <!-- Submit Panel -->
-            <section class="panel submit-panel">
+            <!-- Submit -->
+            <div class="submit-section">
                 <button type="submit" id="submit-btn" class="submit-btn">
                     <span class="btn-text">Submit</span>
                     <span class="spinner"><i class="fa-solid fa-circle-notch fa-spin"></i></span>
                 </button>
                 <div class="form-feedback" id="form-feedback"></div>
-            </section>
+            </div>
         </form>
     </main>
+
+    <footer class="powered-by">
+        <em>Powered by:</em>
+        <img src="assets/DRi_logo_v3_white.png" alt="DRi Logo" />
+    </footer>
 
     <script src="script.js"></script>
 </body>
