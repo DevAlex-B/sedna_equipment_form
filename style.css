@@ -21,7 +21,7 @@ body {
     left: 0;
     width: 100%;
     height: 60px;
-    background: rgba(26, 29, 32, 0.6);
+    background: #20252a;
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
@@ -93,9 +93,24 @@ input[type="time"] {
     padding: 0.6rem;
     border-radius: 6px;
     border: 1px solid rgba(255,255,255,0.2);
+}
+
+input[type="time"] {
     background: rgba(0,0,0,0.3);
     color: #fff;
 }
+
+select {
+    background: #fff;
+    color: #000;
+    border: 1px solid #333;
+}
+
+select option {
+    background: #fff;
+    color: #000;
+}
+
 select:focus,
 input[type="time"]:focus {
     outline: none;
@@ -131,14 +146,32 @@ input[type="time"]:focus {
 }
 .status-btn i {
     font-size: 0.9rem;
+    color: #888;
+    transition: color 0.3s;
 }
-.status-btn.online i { color: #00c851; }
-.status-btn.offline i { color: #ff4444; }
-.status-btn.standby i { color: #ffbb33; }
+.status-btn.online.active i { color: #00c851; }
+.status-btn.offline.active i { color: #ff4444; }
+.status-btn.standby.active i { color: #ffbb33; }
 .status-btn.active {
     border-color: currentColor;
     box-shadow: 0 0 8px currentColor;
 }
+
+.status-legend {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+.status-legend .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+}
+.status-legend .online { color: #00c851; }
+.status-legend .offline { color: #ff4444; }
+.status-legend .standby { color: #ffbb33; }
 
 /* Downtime Switch */
 .switch {
@@ -146,6 +179,16 @@ input[type="time"]:focus {
     display: inline-block;
     width: 50px;
     height: 24px;
+}
+
+.downtime-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.downtime-toggle span {
+    font-size: 0.9rem;
 }
 .switch input { display: none; }
 .slider {
@@ -188,7 +231,7 @@ input:checked + .slider:before {
 }
 
 /* Submit */
-.submit-panel {
+.submit-section {
     text-align: center;
 }
 .submit-btn {
@@ -221,6 +264,27 @@ input:checked + .slider:before {
     margin-top: 0.5rem;
     min-height: 1.2rem;
     font-size: 0.9rem;
+}
+.form-feedback.error { color: #ff4444; }
+.form-feedback.success { color: #00c851; }
+
+.error {
+    border-color: #ff4444 !important;
+}
+
+.powered-by {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.powered-by img {
+    height: 20px;
 }
 
 @keyframes fadeIn {
