@@ -101,14 +101,14 @@ input[type="time"] {
 }
 
 select {
-    background: #fff;
-    color: #000;
-    border: 1px solid #333;
+    background: #2e353b;
+    color: #fff;
+    border: 1px solid #fff;
 }
 
 select option {
-    background: #fff;
-    color: #000;
+    background: #2e353b;
+    color: #fff;
 }
 
 select:focus,
@@ -120,17 +120,17 @@ input[type="time"]:focus {
 
 /* Daily Status */
 .day {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 40px);
+    column-gap: 0.5rem;
     align-items: center;
-    justify-content: space-between;
     margin: 0.5rem 0;
 }
-.day-label {
-    flex: 1;
-}
 .status-options {
-    display: flex;
-    gap: 0.5rem;
+    display: contents;
+}
+.status-options input {
+    display: none;
 }
 .status-btn {
     width: 40px;
@@ -138,40 +138,36 @@ input[type="time"]:focus {
     border-radius: 50%;
     background: rgba(0,0,0,0.4);
     border: 1px solid rgba(255,255,255,0.2);
+    color: #888;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 .status-btn i {
     font-size: 0.9rem;
-    color: #888;
+    color: currentColor;
     transition: color 0.3s;
 }
-.status-btn.online.active i { color: #00c851; }
-.status-btn.offline.active i { color: #ff4444; }
-.status-btn.standby.active i { color: #ffbb33; }
+.status-btn.online.active { color: #00c851; }
+.status-btn.offline.active { color: #ff4444; }
+.status-btn.standby.active { color: #ffbb33; }
 .status-btn.active {
     border-color: currentColor;
     box-shadow: 0 0 8px currentColor;
 }
-
 .status-legend {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 40px);
+    column-gap: 0.5rem;
+    align-items: center;
     margin-bottom: 0.5rem;
 }
 .status-legend .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 0.9rem;
+    text-align: center;
+    font-size: 0.75rem;
 }
-.status-legend .online { color: #00c851; }
-.status-legend .offline { color: #ff4444; }
-.status-legend .standby { color: #ffbb33; }
 
 /* Downtime Switch */
 .switch {
