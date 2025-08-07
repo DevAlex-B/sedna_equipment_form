@@ -1,0 +1,251 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #016EC8, #1A1D20);
+    min-height: 100vh;
+    color: #fff;
+    animation: bgFade 1s ease-out;
+}
+
+@keyframes bgFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Header */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #20252a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    z-index: 10;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.logo {
+    height: 40px;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.header-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.header-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+    .header-buttons {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+/* Form Container */
+main {
+    padding-top: 80px; /* space for fixed header */
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 1rem auto;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon .icon {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-icon input,
+.input-icon select {
+    width: 100%;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+select {
+    padding-left: 2rem;
+}
+
+.error {
+    color: #ff9393;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+/* Daily Status */
+.days-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.day {
+    min-width: 80px;
+    text-align: center;
+}
+
+.day-label {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.options {
+    display: flex;
+    gap: 0.3rem;
+    justify-content: center;
+}
+
+.pill {
+    border: none;
+    border-radius: 9999px;
+    padding: 0.3rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-size: 1rem;
+}
+
+.pill.online.active { background: #16a34a; }
+.pill.offline.active { background: #dc2626; }
+.pill.standby.active { background: #d97706; }
+
+.pill:hover {
+    transform: scale(1.1);
+}
+
+/* Downtime Switch */
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.switch input { display: none; }
+
+.slider {
+    width: 40px;
+    height: 20px;
+    background: #555;
+    border-radius: 10px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.switch input:checked + .slider {
+    background: #16a34a;
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: linear-gradient(90deg, #2563eb, #1e3a8a);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 20;
+}
+
+.toast.show {
+    opacity: 1;
+}
