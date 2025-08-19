@@ -22,6 +22,8 @@ try {
 }
 
 $operator = trim($_POST['operator'] ?? '');
+$currentStatus = trim($_POST['current_status'] ?? '');
+$location = trim($_POST['location'] ?? '');
 $equipment = trim($_POST['equipment'] ?? '');
 $status = trim($_POST['status'] ?? '');
 
@@ -37,8 +39,8 @@ $plannedEnd = $_POST['planned_downtime_end'] ?? null;
 $unplannedStart = $_POST['unplanned_downtime_start'] ?? null;
 $unplannedEnd = $_POST['unplanned_downtime_end'] ?? null;
 
-if ($operator === '' || $equipment === '' || $status === '') {
-    echo json_encode(['success' => false, 'message' => 'Operator, equipment and status are required.']);
+if ($operator === '' || $currentStatus === '' || $location === '' || $equipment === '' || $status === '') {
+    echo json_encode(['success' => false, 'message' => 'Operator, current status, location, equipment and inspection are required.']);
     exit;
 }
 
@@ -50,12 +52,12 @@ if ($downtime) {
 }
 
 $sql = "INSERT INTO equipment_status_form (
-            operator, equipment, status,
+            operator, current_status, location, equipment, status,
             monday_status, tuesday_status, wednesday_status, thursday_status, friday_status, saturday_status, sunday_status,
             downtime, planned_downtime_start, planned_downtime_end, unplanned_downtime_start, unplanned_downtime_end,
             created_at
         ) VALUES (
-            :operator, :equipment, :status,
+            :operator, :current_status, :location, :equipment, :status,
             :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday,
             :downtime, :planned_start, :planned_end, :unplanned_start, :unplanned_end,
             NOW()
@@ -65,6 +67,8 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         ':operator' => $operator,
+        ':current_status' => $currentStatus,
+        ':location' => $location,
         ':equipment' => $equipment,
         ':status' => $status,
         ':monday' => $dayStatuses['monday'],

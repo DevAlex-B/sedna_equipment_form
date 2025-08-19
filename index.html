@@ -43,13 +43,32 @@
                 </select>
             </section>
 
-            <!-- Status Panel -->
+            <!-- Inspection Panel -->
             <section class="panel">
-                <h2><i class="fa-solid fa-clipboard-check"></i> Status</h2>
+                <h2><i class="fa-solid fa-clipboard-check"></i> Inspection</h2>
                 <select name="status" id="status" required>
-                    <option value="" disabled selected>Select status</option>
+                    <option value="" disabled selected>Select inspection</option>
                     <option value="Passed">Passed</option>
                     <option value="Failed">Failed</option>
+                </select>
+            </section>
+
+            <!-- Location Panel -->
+            <section class="panel">
+                <h2><i class="fa-solid fa-location-dot"></i> Location</h2>
+                <select name="location" id="location" required>
+                    <option value="" disabled selected>Select location</option>
+                </select>
+            </section>
+
+            <!-- Current Status Panel -->
+            <section class="panel">
+                <h2><i class="fa-solid fa-car-side"></i> Current Status</h2>
+                <select name="current_status" id="current_status" required>
+                    <option value="" disabled selected>Select current status</option>
+                    <option value="Driving">Driving</option>
+                    <option value="Parked">Parked</option>
+                    <option value="Inactive">Inactive</option>
                 </select>
             </section>
 

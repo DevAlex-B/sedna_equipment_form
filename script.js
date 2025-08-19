@@ -1,3 +1,19 @@
+// Populate locations from server
+const locationSelect = document.getElementById('location');
+if (locationSelect) {
+    fetch('get_geofences.php')
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(name => {
+                const opt = document.createElement('option');
+                opt.value = name;
+                opt.textContent = name;
+                locationSelect.appendChild(opt);
+            });
+        })
+        .catch(() => console.error('Failed to load locations'));
+}
+
 // Daily status toggles
 const daySections = document.querySelectorAll('.day');
 daySections.forEach(day => {
@@ -47,12 +63,19 @@ form.addEventListener('submit', async (e) => {
     feedback.className = 'form-feedback';
     submitBtn.classList.add('loading');
 
-    const requiredFields = ['operator', 'equipment', 'status'];
+    const fieldLabels = {
+        operator: 'operator',
+        equipment: 'equipment',
+        status: 'inspection',
+        location: 'location',
+        current_status: 'current status'
+    };
+    const requiredFields = Object.keys(fieldLabels);
     for (let field of requiredFields) {
         const el = document.getElementById(field);
         if (!el.value) {
             el.classList.add('error');
-            feedback.textContent = `Please select a ${field}.`;
+            feedback.textContent = `Please select a ${fieldLabels[field]}.`;
             feedback.classList.add('error');
             submitBtn.classList.remove('loading');
             return;
