@@ -4,14 +4,19 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    background: linear-gradient(135deg, #016EC8, #1A1D20);
+    background:
+        radial-gradient(circle at top left, rgba(1, 110, 200, 0.6) 0%, transparent 35%),
+        #1A1D20; /* fallback background */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
+    padding-bottom: 50px;
 }
 
 /* Header */
@@ -103,7 +108,7 @@ input[type="time"] {
 select {
     background: #2e353b;
     color: #fff;
-    border: 1px solid #fff;
+    
 }
 
 select option {
@@ -269,9 +274,9 @@ input:checked + .slider:before {
 }
 
 .powered-by {
-    position: fixed;
+    position: absolute;
     bottom: 10px;
-    left: 10px;
+    right: 10px;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -280,7 +285,7 @@ input:checked + .slider:before {
 }
 
 .powered-by img {
-    height: 20px;
+    height: 40px;
 }
 
 @keyframes fadeIn {
