@@ -70,22 +70,17 @@ foreach ($days as $day) {
 }
 
 $downtime = isset($_POST['downtime']) ? 1 : 0;
-$plannedStart = $_POST['planned_downtime_start'] ?? null;
-$plannedEnd = $_POST['planned_downtime_end'] ?? null;
-$unplannedStart = $_POST['unplanned_downtime_start'] ?? null;
-$unplannedEnd = $_POST['unplanned_downtime_end'] ?? null;
+$plannedStart = ($_POST['planned_downtime_start'] ?? '') ?: null;
+$plannedEnd = ($_POST['planned_downtime_end'] ?? '') ?: null;
+$unplannedStart = ($_POST['unplanned_downtime_start'] ?? '') ?: null;
+$unplannedEnd = ($_POST['unplanned_downtime_end'] ?? '') ?: null;
 
 if ($operator === '' || $currentStatus === '' || $location === '' || $equipment === '' || $status === '') {
     echo json_encode(['success' => false, 'message' => 'Operator, current status, location, equipment and inspection are required.']);
     exit;
 }
 
-if ($downtime) {
-    if ($plannedStart === '' || $plannedEnd === '' || $unplannedStart === '' || $unplannedEnd === '') {
-        echo json_encode(['success' => false, 'message' => 'All downtime fields are required when downtime is enabled.']);
-        exit;
-    }
-}
+// Downtime details are optional even when downtime is marked
 
 // Fetch polygon for selected location and generate random coordinate
 $geoStmt = $pdo->prepare('SELECT coordinates FROM geofences WHERE name = :name LIMIT 1');
